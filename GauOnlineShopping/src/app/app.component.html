@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <img width = 300 src ="../assets/images/download.png">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<h1>Products</h1>
+<mat-card>
+   <mat-card-title>Product in Store</mat-card-title>
+   <!-- <mat-card-actions> -->
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <!-- -<mat-grid-tile *ngFor ="let product of products"> -->
+<mat-grid-tile *ngFor ="let product of products"> 
+    <p>
+<img src="..\assets\images\{{product.productPicture}}"/> <br>
+  {{product.productDescription}}<br>
+  <h2>R{{product.productPrice}}</h2> <br>
+  <button mat-flat-button color="warn" (click)= "newProd(product)">AddToCart</button>
+  <button mat-icon-button color="accent">LIKE</button> 
+ 
+
+</mat-grid-tile>
+</mat-grid-list>
+<!-- </mat-card-actions> -->
+
+<mat-card>
+  <mat-card-title>MY CART</mat-card-title>
+<mat-card *ngFor ="let newPro of newProduct">
+  <mat-card-content>
+  <img src="..\assets\images\{{newPro.productPicture}}"/> <br>
+  {{newPro.productDescription}}<br>
+  <h2>R{{newPro.productPrice}}</h2> <br>
+  <button (click) ="delete(newPro)">X </button>
+  </mat-card-content>
+</mat-card>
+<p> total amount:{{totalAmt}}</p>
+<router-outlet></router-outlet>
